@@ -2,9 +2,10 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Heart, Shield, Users, Calendar, Activity, MessageCircle } from 'lucide-react';
+import { ArrowRight, Heart, Shield, Users, Calendar, } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent } from '@/components/ui/card';
+import Image from 'next/image';
 
 const LandingPage = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -77,7 +78,7 @@ const LandingPage = () => {
             >
               {/* Placeholder for hero image */}
               <div className="aspect-square rounded-full bg-gradient-to-r from-purple-200 to-pink-200 flex items-center justify-center">
-                <img 
+                <Image
                   src="/api/placeholder/600/600"
                   alt="Women's Health App"
                   className="rounded-3xl transform -rotate-6 hover:rotate-0 transition-transform duration-300"
