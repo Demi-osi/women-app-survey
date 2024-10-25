@@ -2,8 +2,14 @@ import React from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { FormData } from '../types/survey';
 
-const StepFive = ({ formData, setFormData }) => {
+interface StepFiveProps {
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+const StepFive: React.FC<StepFiveProps> = ({ formData, setFormData }) => {
   const educationalContent = [
     "Articles",
     "Videos",
@@ -33,14 +39,14 @@ const StepFive = ({ formData, setFormData }) => {
                 checked={formData.educationalContentPreference.includes(content)}
                 onCheckedChange={(checked) => {
                   if (checked) {
-                    setFormData(prev => ({
+                    setFormData((prev: FormData) => ({
                       ...prev,
                       educationalContentPreference: [...prev.educationalContentPreference, content]
                     }));
                   } else {
-                    setFormData(prev => ({
+                    setFormData((prev: FormData) => ({
                       ...prev,
-                      educationalContentPreference: prev.educationalContentPreference.filter(c => c !== content)
+                      educationalContentPreference: prev.educationalContentPreference.filter((c) => c !== content)
                     }));
                   }
                 }}
@@ -61,14 +67,14 @@ const StepFive = ({ formData, setFormData }) => {
                 checked={formData.beneficialContent.includes(content)}
                 onCheckedChange={(checked) => {
                   if (checked) {
-                    setFormData(prev => ({
+                    setFormData((prev: FormData) => ({
                       ...prev,
                       beneficialContent: [...prev.beneficialContent, content]
                     }));
                   } else {
-                    setFormData(prev => ({
+                    setFormData((prev: FormData) => ({
                       ...prev,
-                      beneficialContent: prev.beneficialContent.filter(c => c !== content)
+                      beneficialContent: prev.beneficialContent.filter((c) => c !== content)
                     }));
                   }
                 }}
@@ -83,7 +89,10 @@ const StepFive = ({ formData, setFormData }) => {
         <h3 className="text-lg font-semibold">16. How important is access to expert advice within the app?</h3>
         <RadioGroup
           value={formData.expertAdviceImportance}
-          onValueChange={(value) => setFormData(prev => ({...prev, expertAdviceImportance: value}))}
+          onValueChange={(value) => setFormData((prev: FormData) => ({
+            ...prev,
+            expertAdviceImportance: value
+          }))}
         >
           {['Extremely important', 'Very important', 'Moderately important', 'Slightly important', 'Not important'].map((level) => (
             <div key={level} className="flex items-center space-x-2">
@@ -98,7 +107,7 @@ const StepFive = ({ formData, setFormData }) => {
         <h3 className="text-lg font-semibold">17. Would you like to see community support features?</h3>
         <RadioGroup
           value={formData.communitySupport.toString()}
-          onValueChange={(value) => setFormData(prev => ({...prev, communitySupport: value === 'true'}))}
+          onValueChange={(value) => setFormData((prev: FormData) => ({...prev, communitySupport: value === 'true'}))}
         >
           <div className="flex items-center space-x-2">
             <RadioGroupItem value="true" id="community-yes" />

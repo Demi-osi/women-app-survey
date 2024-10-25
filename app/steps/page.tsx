@@ -1,6 +1,5 @@
 'use client'
 
-
 import React, { useState } from 'react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -12,8 +11,9 @@ import StepThree from '../components/survey-form-step-three';
 import StepFour from '../components/survey-form-step-four';
 import StepFive from '../components/survey-form-step-five';
 import StepSix from '../components/survey-form-step-six';
+import { FormData } from '../types/survey';
 
-const initialFormData = {
+const initialFormData: FormData = {
   valuableFeatures: [],
   appInteraction: '',
   reminderTypes: [],
@@ -38,21 +38,23 @@ const initialFormData = {
   additionalComments: ''
 };
 
-const CompleteSurveyForm = () => {
+const CompleteSurveyForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 6;
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
 
-  const handleNext = () => {
+  const handleNext = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent form submission
     if (currentStep < totalSteps) {
       setCurrentStep(prev => prev + 1);
       window.scrollTo(0, 0);
     }
   };
 
-  const handlePrevious = () => {
+  const handlePrevious = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault(); // Prevent form submission
     if (currentStep > 1) {
       setCurrentStep(prev => prev - 1);
       window.scrollTo(0, 0);
@@ -85,7 +87,7 @@ const CompleteSurveyForm = () => {
       } else {
         throw new Error(data.message || 'Something went wrong');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
         message: 'There was an error submitting the form. Please try again.'
@@ -135,6 +137,9 @@ const CompleteSurveyForm = () => {
               <AlertDescription>{submitStatus.message}</AlertDescription>
             </Alert>
           )}
+          <p className="mb-4">
+            We&apos;re excited to learn more about you!
+          </p>
           <form onSubmit={handleSubmit} className="space-y-6">
             {renderStep()}
             
