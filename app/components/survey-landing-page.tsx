@@ -1,5 +1,3 @@
-'use client'
-
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Heart, Shield, Users, Calendar, Activity, MessageCircle } from 'lucide-react';
@@ -62,7 +60,7 @@ const LandingPage = () => {
               </p>
               <Button 
                 className="bg-purple-600 hover:bg-purple-700 text-white px-8 py-6 text-lg rounded-full"
-                onClick={() => window.location.href = '/steps'}
+                onClick={() => window.location.href = '/survey'}
               >
                 Take the Survey
                 <ArrowRight className="ml-2" />
