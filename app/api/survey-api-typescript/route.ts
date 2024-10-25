@@ -43,10 +43,8 @@ interface SurveyFormData {
   to: string;
 } */
 
-interface ApiResponse {
-  message: string;
-  error?: string;
-}
+// Remove or comment out the unused import
+// import { ApiResponse } from './types';
 
 // Environment variables type checking
 /*const getEmailConfig = (): EmailConfig => {

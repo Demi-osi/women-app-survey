@@ -2,8 +2,14 @@ import React from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
+import { FormData } from '../types/survey';
 
-const StepSix = ({ formData, setFormData }) => {
+interface StepSixProps {
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+const StepSix: React.FC<StepSixProps> = ({ formData, setFormData }) => {
   return (
     <div className="space-y-8">
       {/* Customization Section */}
@@ -101,6 +107,12 @@ const StepSix = ({ formData, setFormData }) => {
       <div className="rounded-lg bg-purple-50 p-6 text-center">
         <p className="text-purple-800">
           Thank you for taking the time to complete this survey. Your feedback is invaluable in helping us create a better healthcare experience for women.
+        </p>
+        <p className="mb-2">
+          Don&apos;t worry, we won&apos;t share your information with anyone else.
+        </p>
+        <p>
+          If you&apos;re comfortable, we&apos;d love to hear more about your experience.
         </p>
       </div>
     </div>

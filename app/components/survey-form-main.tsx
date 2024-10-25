@@ -3,14 +3,15 @@ import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/com
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
 import { Alert, AlertDescription } from '@/components/ui/alert';
-import StepOne from './StepOne';
-import StepTwo from './StepTwo';
-import StepThree from './StepThree';
-import StepFour from './StepFour';
-import StepFive from './StepFive';
-import StepSix from './StepSix';
+import StepOne from './survey-form-step-one';
+import StepTwo from './survey-form-step-two';
+import StepThree from './survey-form-step-three';
+import StepFour from './survey-form-step-four';
+import StepFive from './survey-form-step-five';
+import StepSix from './survey-form-step-six';
+import { FormData } from '../types/survey';
 
-const initialFormData = {
+const initialFormData: FormData = {
   valuableFeatures: [],
   appInteraction: '',
   reminderTypes: [],
@@ -35,10 +36,10 @@ const initialFormData = {
   additionalComments: ''
 };
 
-const CompleteSurveyForm = () => {
+const CompleteSurveyForm: React.FC = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const totalSteps = 6;
-  const [formData, setFormData] = useState(initialFormData);
+  const [formData, setFormData] = useState<FormData>(initialFormData);
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
 
@@ -56,7 +57,7 @@ const CompleteSurveyForm = () => {
     }
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitStatus({ success: false, message: '' });
@@ -82,7 +83,7 @@ const CompleteSurveyForm = () => {
       } else {
         throw new Error(data.message || 'Something went wrong');
       }
-    } catch (error) {
+    } catch {
       setSubmitStatus({
         success: false,
         message: 'There was an error submitting the form. Please try again.'
@@ -116,7 +117,7 @@ const CompleteSurveyForm = () => {
       <Card className="max-w-3xl mx-auto shadow-lg">
         <CardHeader>
           <CardTitle className="text-2xl font-bold text-purple-800">
-            Women's Health Application Survey
+            Women&apos;s Health Application Survey
           </CardTitle>
           <CardDescription>
             Help us create a better healthcare experience

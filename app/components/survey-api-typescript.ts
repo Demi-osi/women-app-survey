@@ -40,11 +40,6 @@ interface EmailConfig {
   to: string;
 }
 
-interface ApiResponse {
-  message: string;
-  error?: string;
-}
-
 // Environment variables type checking
 const getEmailConfig = (): EmailConfig => {
   const config: EmailConfig = {

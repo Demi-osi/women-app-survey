@@ -2,26 +2,35 @@ import React from 'react';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { Label } from '@/components/ui/label';
 import { Checkbox } from '@/components/ui/checkbox';
+import { FormData } from '../types/survey';
 
-const StepTwo = ({ formData, setFormData }) => {
+interface StepTwoProps {
+  formData: FormData;
+  setFormData: React.Dispatch<React.SetStateAction<FormData>>;
+}
+
+const StepTwo: React.FC<StepTwoProps> = ({ formData, setFormData }) => {
   const appFrustrations = [
     "Poor user interface",
     "Lack of relevant information",
-    "Limited functionality",
+    "Difficulty in data entry",
+    "Inaccurate tracking or predictions",
+    "Lack of personalization",
     "Privacy concerns",
-    "Inconsistent tracking tools",
-    "Expensive subscription fees"
+    "Too many notifications",
+    "Limited features",
+    "Syncing issues with other devices or apps"
   ];
 
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">4. What device do you primarily use for healthcare apps?</h3>
+        <h3 className="text-lg font-semibold">4. What is your primary device for using health apps?</h3>
         <RadioGroup
           value={formData.primaryDevice}
-          onValueChange={(value) => setFormData(prev => ({...prev, primaryDevice: value}))}
+          onValueChange={(value) => setFormData(prev => ({ ...prev, primaryDevice: value }))}
         >
-          {['Smartphone', 'Tablet', 'Laptop/Desktop', 'WebApp'].map((device) => (
+          {['Smartphone', 'Tablet', 'Smartwatch', 'Desktop computer'].map((device) => (
             <div key={device} className="flex items-center space-x-2">
               <RadioGroupItem value={device} id={`device-${device}`} />
               <Label htmlFor={`device-${device}`}>{device}</Label>
@@ -31,10 +40,10 @@ const StepTwo = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">5. How often do you use mobile health apps?</h3>
+        <h3 className="text-lg font-semibold">5. How often do you currently use health apps?</h3>
         <RadioGroup
           value={formData.appUsageFrequency}
-          onValueChange={(value) => setFormData(prev => ({...prev, appUsageFrequency: value}))}
+          onValueChange={(value) => setFormData(prev => ({ ...prev, appUsageFrequency: value }))}
         >
           {['Daily', 'Weekly', 'Monthly', 'Rarely', 'Never'].map((frequency) => (
             <div key={frequency} className="flex items-center space-x-2">
@@ -46,7 +55,7 @@ const StepTwo = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">6. What frustrates you the most about existing health apps?</h3>
+        <h3 className="text-lg font-semibold">6. What frustrations have you experienced with health apps?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {appFrustrations.map((frustration) => (
             <div key={frustration} className="flex items-center space-x-2">
