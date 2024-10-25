@@ -1,5 +1,5 @@
 // pages/api/submit-survey.ts
-import type { NextApiRequest, NextApiResponse } from 'next';
+//import type { NextApiRequest, NextApiResponse } from 'next';
 import { NextResponse } from 'next/server';
 import nodemailer, { Transporter } from 'nodemailer';
 import dotenv from 'dotenv';
