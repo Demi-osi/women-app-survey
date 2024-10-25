@@ -33,7 +33,8 @@ const initialFormData: FormData = {
   personalizedInsights: '',
   motivation: '',
   desiredFeature: '',
-  additionalComments: ''
+  additionalComments: '',
+  privacyFeaturesSecure: '',
 };
 
 const CompleteSurveyForm: React.FC = () => {

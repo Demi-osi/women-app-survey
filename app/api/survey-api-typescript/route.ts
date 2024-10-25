@@ -154,7 +154,7 @@ const formatEmailContent = (formData: SurveyFormData): string => {
     - Privacy Features: ${formatField(formData.privacyFeatures)}
     - Data Storage Comfort: ${formatField(formData.dataStorageComfort)}
     
-    Educational Preferences:
+    Educational Preferences Consumption:
     ${formatField(formData.educationalContentPreference)}
     
     Beneficial Content Types:

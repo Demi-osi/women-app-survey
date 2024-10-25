@@ -104,7 +104,7 @@ const StepFive: React.FC<StepFiveProps> = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">17. Would you like to see community support features?</h3>
+        <h3 className="text-lg font-semibold">17. Would you like to see community support features, such as forums or discussion groups?</h3>
         <RadioGroup
           value={formData.communitySupport.toString()}
           onValueChange={(value) => setFormData((prev: FormData) => ({...prev, communitySupport: value === 'true'}))}

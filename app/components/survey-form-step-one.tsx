@@ -20,9 +20,9 @@ const features = [
   "Support groups or community forums",
   "Medication reminders and prescription refills",
   "24/7 access to on-demand healthcare services",
-  "Educational content on women&apos;s health topics",
-  "Fitness and nutrition plans tailored to women&apos;s health",
-  "Virtual consultations with women&apos;s health specialists"
+  "Educational content on women's health topics",
+  "Fitness and nutrition plans tailored to women's health",
+  "Virtual consultations with women's health specialists"
 ];
 
 const reminderTypes = [
@@ -36,7 +36,7 @@ const StepOne: React.FC<StepOneProps> = ({ formData, setFormData }) => {
     <div className="space-y-6">
       {/* Features selection */}
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">1. Which features would be most valuable to you in a women&apos;s health app?</h3>
+        <h3 className="text-lg font-semibold">{`1. Which features would be most valuable to you in a women's health app?`}</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {features.map((feature) => (
             <div key={feature} className="flex items-center space-x-2">

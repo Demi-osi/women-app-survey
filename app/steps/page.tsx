@@ -13,6 +13,7 @@ import StepFive from '../components/survey-form-step-five';
 import StepSix from '../components/survey-form-step-six';
 import { FormData } from '../types/survey';
 
+
 const initialFormData: FormData = {
   valuableFeatures: [],
   appInteraction: '',
@@ -35,7 +36,8 @@ const initialFormData: FormData = {
   personalizedInsights: '',
   motivation: '',
   desiredFeature: '',
-  additionalComments: ''
+  additionalComments: '',
+  privacyFeaturesSecure: '',
 };
 
 const CompleteSurveyForm: React.FC = () => {

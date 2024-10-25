@@ -111,9 +111,6 @@ const StepSix: React.FC<StepSixProps> = ({ formData, setFormData }) => {
         <p className="mb-2">
           Don&apos;t worry, we won&apos;t share your information with anyone else.
         </p>
-        <p>
-          If you&apos;re comfortable, we&apos;d love to hear more about your experience.
-        </p>
       </div>
     </div>
   );

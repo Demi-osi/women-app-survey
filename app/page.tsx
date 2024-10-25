@@ -126,30 +126,6 @@ const LandingPage = () => {
         </div>
       </motion.div>
 
-      {/* Statistics Section */}
-      <div className="bg-white/50 backdrop-blur-sm py-24">
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
-        >
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">1000+</div>
-              <div className="text-gray-600">Survey Responses</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">12</div>
-              <div className="text-gray-600">Key Features</div>
-            </div>
-            <div className="space-y-2">
-              <div className="text-4xl font-bold text-purple-600">24/7</div>
-              <div className="text-gray-600">Support Access</div>
-            </div>
-          </div>
-        </motion.div>
-      </div>
 
       {/* CTA Section */}
       <motion.div
@@ -166,7 +142,7 @@ const LandingPage = () => {
             </p>
             <Button 
               className="bg-white text-purple-600 hover:bg-gray-100 px-8 py-6 text-lg rounded-full"
-              onClick={() => window.location.href = '/survey'}
+              onClick={() => window.location.href = '/steps'}
             >
               Start the Survey
               <ArrowRight className="ml-2" />

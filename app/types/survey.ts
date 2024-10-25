@@ -21,6 +21,7 @@ export interface FormData {
   motivation: string;
   desiredFeature: string;
   additionalComments: string;
+  privacyFeaturesSecure: string;
 }
 
 export interface SurveyQuestion {

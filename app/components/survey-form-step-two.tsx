@@ -19,13 +19,14 @@ const StepTwo: React.FC<StepTwoProps> = ({ formData, setFormData }) => {
     "Privacy concerns",
     "Too many notifications",
     "Limited features",
-    "Syncing issues with other devices or apps"
+    "Syncing issues with other devices or apps",
+    "Expensive subscription fees"
   ];
 
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">4. What is your primary device for using health apps?</h3>
+        <h3 className="text-lg font-semibold">4. What is your primary device for using healthcare apps?</h3>
         <RadioGroup
           value={formData.primaryDevice}
           onValueChange={(value) => setFormData(prev => ({ ...prev, primaryDevice: value }))}
@@ -40,7 +41,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">5. How often do you currently use health apps?</h3>
+        <h3 className="text-lg font-semibold">5. How often do you use mobile health apps?</h3>
         <RadioGroup
           value={formData.appUsageFrequency}
           onValueChange={(value) => setFormData(prev => ({ ...prev, appUsageFrequency: value }))}
@@ -55,7 +56,7 @@ const StepTwo: React.FC<StepTwoProps> = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">6. What frustrations have you experienced with health apps?</h3>
+        <h3 className="text-lg font-semibold">6. What frustrates you the most about existing health apps?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {appFrustrations.map((frustration) => (
             <div key={frustration} className="flex items-center space-x-2">

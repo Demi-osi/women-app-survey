@@ -11,15 +11,14 @@ interface StepThreeProps {
 
 const StepThree: React.FC<StepThreeProps> = ({ formData, setFormData }) => {
   const healthTracking = [
-    "Health Data",
+    "Mental Health",
     "Weight",
     "Sleep",
     "Nutrition",
     "Exercise",
     "Mood",
-    "Stress levels",
     "Menstrual cycle",
-    "Fertility",
+    "General wellness and preventive care",
     "Pregnancy",
     "Menopause symptoms",
     "Chronic condition management"
@@ -28,7 +27,7 @@ const StepThree: React.FC<StepThreeProps> = ({ formData, setFormData }) => {
   return (
     <div className="space-y-6">
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">7. What health aspects would you like to track?</h3>
+        <h3 className="text-lg font-semibold">7. What specific health concerns or areas of wellness are you most interested in tracking?</h3>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {healthTracking.map((aspect) => (
             <div key={aspect} className="flex items-center space-x-2">
@@ -56,34 +55,74 @@ const StepThree: React.FC<StepThreeProps> = ({ formData, setFormData }) => {
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">8. How important are privacy features to you?</h3>
+        <h3 className="text-lg font-semibold">8. How often do you visit healthcare providers?</h3>
         <RadioGroup
-          value={formData.privacyFeatures}
-          onValueChange={(value) => setFormData(prev => ({ ...prev, privacyFeatures: value }))}
+          value={formData.healthcareVisits}
+          onValueChange={(value) => setFormData(prev => ({ ...prev, healthcareVisits: value }))}
         >
-          {['Extremely important', 'Very important', 'Moderately important', 'Slightly important', 'Not important'].map((level) => (
-            <div key={level} className="flex items-center space-x-2">
-              <RadioGroupItem value={level} id={`privacy-${level}`} />
-              <Label htmlFor={`privacy-${level}`}>{level}</Label>
+          {['Weekly', 'Monthly', 'Quarterly', 'Annually', 'Only when necessary'].map((frequency) => (
+            <div key={frequency} className="flex items-center space-x-2">
+              <RadioGroupItem value={frequency} id={`visits-${frequency}`} />
+              <Label htmlFor={`visits-${frequency}`}>{frequency}</Label>
             </div>
           ))}
         </RadioGroup>
       </div>
 
       <div className="space-y-4">
-        <h3 className="text-lg font-semibold">9. How comfortable are you with storing your health data in the app?</h3>
-        <RadioGroup
-          value={formData.dataStorageComfort}
-          onValueChange={(value) => setFormData(prev => ({ ...prev, dataStorageComfort: value }))}
-        >
-          {['Very comfortable', 'Somewhat comfortable', 'Neutral', 'Somewhat uncomfortable', 'Very uncomfortable'].map((level) => (
-            <div key={level} className="flex items-center space-x-2">
-              <RadioGroupItem value={level} id={`comfort-${level}`} />
-              <Label htmlFor={`comfort-${level}`}>{level}</Label>
+        <h3 className="text-lg font-semibold">9. What are the biggest challenges you face when accessing healthcare?</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          {[
+            "Lack of convenient appointment times",
+            "Remembering medication",
+            "Understanding medical information",
+            "Difficulty finding specialized care",
+            "Communicating with healthcare providers",
+            "Managing multiple health conditions",
+            "Lack of personalized care",
+            "Financial barriers"
+          ].map((challenge) => (
+            <div key={challenge} className="flex items-center space-x-2">
+              <Checkbox
+                id={`challenge-${challenge}`}
+                checked={formData.healthcareChallenges.includes(challenge)}
+                onCheckedChange={(checked) => {
+                  if (checked) {
+                    setFormData(prev => ({
+                      ...prev,
+                      healthcareChallenges: [...prev.healthcareChallenges, challenge]
+                    }));
+                  } else {
+                    setFormData(prev => ({
+                      ...prev,
+                      healthcareChallenges: prev.healthcareChallenges.filter(c => c !== challenge)
+                    }));
+                  }
+                }}
+              />
+              <Label htmlFor={`challenge-${challenge}`}>{challenge}</Label>
             </div>
           ))}
+        </div>
+      </div>
+
+      <div className="space-y-4">
+        <h3 className="text-lg font-semibold">10. Would you like to integrate data from wearable devices or other health apps?</h3>
+        <RadioGroup
+          value={formData.wearableIntegration.toString()}
+          onValueChange={(value) => setFormData(prev => ({ ...prev, wearableIntegration: value === 'true' }))}
+        >
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="true" id="wearable-yes" />
+            <Label htmlFor="wearable-yes">Yes</Label>
+          </div>
+          <div className="flex items-center space-x-2">
+            <RadioGroupItem value="false" id="wearable-no" />
+            <Label htmlFor="wearable-no">No</Label>
+          </div>
         </RadioGroup>
       </div>
+
     </div>
   );
 };
