@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight, Heart, Shield, Users, Calendar, } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -8,12 +8,6 @@ import { Card, CardContent } from '@/components/ui/card';
 import Image from 'next/image';
 
 const LandingPage = () => {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    setIsVisible(true);
-  }, []);
-
   const features = [
     {
       icon: <Heart className="w-6 h-6 text-pink-500" />,
@@ -74,14 +68,15 @@ const LandingPage = () => {
               initial={{ x: 100, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="relative"
+              className="relative flex justify-center items-center"
             >
-              {/* Placeholder for hero image */}
-              <div className="aspect-square rounded-full bg-gradient-to-r from-purple-200 to-pink-200 flex items-center justify-center">
+              <div className="w-64 h-64 rounded-full bg-gradient-to-r from-purple-200 to-pink-200 flex items-center justify-center overflow-hidden">
                 <Image
-                  src="/api/placeholder/600/600"
+                  src="/woman.jpg"
                   alt="Women's Health App"
-                  className="rounded-3xl transform -rotate-6 hover:rotate-0 transition-transform duration-300"
+                  width={256}
+                  height={256}
+                  className="rounded-full transform -rotate-6 hover:rotate-0 transition-transform duration-300"
                 />
               </div>
             </motion.div>
